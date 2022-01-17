@@ -358,7 +358,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 300899415}
-  m_LocalRotation: {x: 0.041583207, y: 0.00000015974034, z: -0.0000000066451085, w: 0.9991351}
+  m_LocalRotation: {x: 0.041583207, y: 0.00000015974034, z: -0.0000000066451102, w: 0.9991351}
   m_LocalPosition: {x: 0, y: 3, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -883,7 +883,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 32
   m_CollisionDetection: 0
 --- !u!1 &955947478
 GameObject:
@@ -1707,7 +1707,7 @@ GameObject:
   - component: {fileID: 6129319464561962426}
   - component: {fileID: 803850975}
   m_Layer: 0
-  m_Name: QuickRigCharacter2_Reference
+  m_Name: Reference
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1791,7 +1791,7 @@ GameObject:
   - component: {fileID: 940428787}
   - component: {fileID: 919132149376848549}
   m_Layer: 0
-  m_Name: finalgamerig
+  m_Name: MrGangSimple
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1812,9 +1812,11 @@ MonoBehaviour:
   body: {fileID: 940428788}
   cam: {fileID: 300899416}
   anim: {fileID: 803850975}
-  walk: 3
-  sprint: 15
-  speed: 0
+  walk: 5
+  sprint: 20
+  currentSpeed: 0
+  state: 0
+  isSprinting: 0
   turnSmoothTime: 0.1
 --- !u!4 &1081389012339930479
 Transform:
@@ -3018,7 +3020,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3312255008792545379}
-  m_LocalRotation: {x: 0.049691264, y: -0.00000017553782, z: 0.000000023463292, w: 0.99876463}
+  m_LocalRotation: {x: 0.049691264, y: -0.00000017553782, z: 0.00000002346329, w: 0.99876463}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3218,7 +3220,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3312255009371116528}
-  m_LocalRotation: {x: 0.118997425, y: -0.0000001650523, z: 0.000000033878035, w: 0.9928946}
+  m_LocalRotation: {x: 0.118997425, y: -0.00000014826628, z: 0.000000030432147, w: 0.9928946}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3334,7 +3336,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3312255009385591510}
-  m_LocalRotation: {x: 0.041583207, y: 0.00000015974034, z: -0.0000000066451085, w: 0.9991351}
+  m_LocalRotation: {x: 0.041583207, y: 0.00000015974034, z: -0.0000000066451102, w: 0.9991351}
   m_LocalPosition: {x: 0, y: 4, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4366,7 +4368,7 @@ GameObject:
   - component: {fileID: 5774165693679911707}
   - component: {fileID: 8153123043403822588}
   m_Layer: 0
-  m_Name: pDisc4
+  m_Name: Mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
