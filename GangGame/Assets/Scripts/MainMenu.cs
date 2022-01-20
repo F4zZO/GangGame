@@ -7,10 +7,14 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField] private Toggle t;
-   
+
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.None;
+    }
+
     public void PlayLevel1 ()
     {
-
         GameManager.Instance.PlayLevel1(t.isOn);
     }
 
