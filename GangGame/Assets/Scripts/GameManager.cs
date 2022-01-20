@@ -31,6 +31,16 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public void ReloadScene()
+    {
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(0);
+    }
+    public void Win()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     public void PlayLevel1(bool rag)
     {
         SceneManager.LoadScene(1);

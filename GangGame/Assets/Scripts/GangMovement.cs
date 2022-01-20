@@ -70,10 +70,14 @@ public class GangMovement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
 
-        if (GameManager.Instance.isRagdoll)
+        try
         {
-            this.gameObject.SetActive(false);
+            if (GameManager.Instance.isRagdoll)
+            {
+                this.gameObject.SetActive(false);
+            }
         }
+        catch { }
 
         this.timerJumpCD = new Timer();
         this.timerJumpCD.Elapsed += this.EndJumpCD;
@@ -294,6 +298,19 @@ public class GangMovement : MonoBehaviour
     {
         this.isLanding = false;
         this.timerLand.Stop();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Death")
+        {
+            GameManager.Instance.ReloadScene();
+        }
+
+        if (collision.collider.tag == "Win")
+        {
+            GameManager.Instance.Win();
+        }
     }
 
     /*
