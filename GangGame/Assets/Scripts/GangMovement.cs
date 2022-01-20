@@ -70,6 +70,11 @@ public class GangMovement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
 
+        if (GameManager.Instance.isRagdoll)
+        {
+            this.gameObject.SetActive(false);
+        }
+
         this.timerJumpCD = new Timer();
         this.timerJumpCD.Elapsed += this.EndJumpCD;
 
