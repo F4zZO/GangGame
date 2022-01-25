@@ -134,7 +134,7 @@ public class GangMovement : MonoBehaviour
             }
         }
 
-        if(this.body.velocity.y > 0.1)
+        if(this.body.velocity.y > 0.1 && Input.GetKey(KeyCode.Space))
         {
             this.playerState = PlayerState.jump;
         }
@@ -305,12 +305,22 @@ public class GangMovement : MonoBehaviour
     {
         if (collision.collider.tag == "Death")
         {
-            GameManager.Instance.ReloadScene();
+            try
+            {
+                GameManager.Instance.ReloadScene();
+            }
+            catch
+            {}
         }
 
         if (collision.collider.tag == "Win")
         {
-            GameManager.Instance.Win();
+            try
+            {
+                GameManager.Instance.Win();
+            }
+            catch
+            { }
         }
     }
 

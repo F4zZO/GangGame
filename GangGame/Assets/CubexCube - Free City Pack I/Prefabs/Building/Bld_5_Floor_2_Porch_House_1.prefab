@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3624453687518797418}
   - component: {fileID: 424322400824758735}
   - component: {fileID: 2452079912634705157}
+  - component: {fileID: 1324899823850912410}
   m_Layer: 0
   m_Name: Bld_5_Floor_2_Porch_House_1
   m_TagString: Untagged
@@ -81,3 +82,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &1324899823850912410
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4109382654369580240}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: ba7238c5f77671545ae3fd713294fea2, type: 3}
