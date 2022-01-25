@@ -7,6 +7,7 @@ TagManager:
   - Floor
   - Death
   - Win
+  - LoseScreen
   layers:
   - Default
   - TransparentFX
@@ -43,4 +44,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: 
+    uniqueID: 422174601
     locked: 0
