@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private Toggle t;
+    //[SerializeField] private Toggle t;
 
     private void Start()
     {
@@ -15,17 +15,17 @@ public class MainMenu : MonoBehaviour
 
     public void PlayLevel1 ()
     {
-        GameManager.Instance.PlayLevel1(t.isOn);
+        GameManager.Instance.PlayLevel1();
     }
 
     public void PlayLevel2()
     {
-        GameManager.Instance.PlayLevel2(t.isOn);
+        GameManager.Instance.PlayLevel2();
     }
 
     public void PlayLevel3()
     {
-        GameManager.Instance.PlayLevel3(t.isOn);
+        GameManager.Instance.PlayLevel3();
     }
 
     public void QuitGame ()

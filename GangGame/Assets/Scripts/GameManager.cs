@@ -41,21 +41,21 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void PlayLevel1(bool rag)
+    public void PlayLevel1()//bool rag)
     {
         SceneManager.LoadScene(1);
-        this.isRagdoll = rag;
+        //this.isRagdoll = rag;
     }
 
-    public void PlayLevel2(bool rag)
+    public void PlayLevel2()//bool rag)
     {
         SceneManager.LoadScene(2);
-        this.isRagdoll = rag;
+        //this.isRagdoll = rag;
     }
 
-    public void PlayLevel3(bool rag)
+    public void PlayLevel3()//bool rag)
     {
         SceneManager.LoadScene(3);
-        this.isRagdoll = rag;
+        //this.isRagdoll = rag;
     }
 }
