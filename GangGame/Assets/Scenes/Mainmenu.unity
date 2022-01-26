@@ -1498,7 +1498,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e042d3ac93a1ab94ba147ee85c9f824e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isRagdoll: 0
+  isPaused: 0
+  state: 0
 --- !u!1 &1778205872
 GameObject:
   m_ObjectHideFlags: 0
@@ -3566,7 +3567,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5506544311164627107}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59ffdc527259dc3499476516e54580a3, type: 3}
+  m_Script: {fileID: 11500000, guid: 42317ea32a40eae4a9a8b4d7f8b1a165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: b65fe9ca63d4cd94899086538b8b3913, type: 2}

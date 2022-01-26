@@ -7,7 +7,6 @@ public class GangMovement : MonoBehaviour
     [SerializeField] private Rigidbody body;
     [SerializeField] private Transform cam;
     [SerializeField] private Animator animator;
-    [SerializeField] private BoxCollider spring;
 
     [Header("--- GENERAL ---")]
     [SerializeField] private float currentSpeed;
@@ -70,16 +69,6 @@ public class GangMovement : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
 
-        /*
-        try
-        {
-            if (GameManager.Instance.isRagdoll)
-            {
-                this.gameObject.SetActive(false);
-            }
-        }
-        catch { } */
-
         this.timerJumpCD = new Timer();
         this.timerJumpCD.Elapsed += this.EndJumpCD;
 
@@ -94,6 +83,8 @@ public class GangMovement : MonoBehaviour
     
     void Update()
     {
+        if (GameManager.Instance.state == GameManager.GameState.start) return;
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
@@ -180,7 +171,7 @@ public class GangMovement : MonoBehaviour
             switch (this.playerState)
             {
                 case PlayerState.idle:
-                    this.animator.Play("idle");
+                    this.animator.Play("idle2");
                     break;
                 case PlayerState.walk:
                     this.animator.Play("walk");

@@ -5,18 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenuScript : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
-
     public GameObject pauseMenu;
 
-    // Update is called once per frame
+    private GameManager gm = GameManager.Instance;
+
     void Update()
     {
         
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameIsPaused)
+            if (this.gm.isPaused)
             {
                 Resume();
             } else
@@ -31,7 +30,7 @@ public class PauseMenuScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
-        GameIsPaused = false;
+        this.gm.isPaused = false;
         this.GetComponent<AudioSource>().UnPause();
     }
     public void Pause ()
@@ -39,7 +38,7 @@ public class PauseMenuScript : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
-        GameIsPaused = true;
+        this.gm.isPaused = true;
         this.GetComponent<AudioSource>().Pause();
     }
     public void LoadMainMenu()

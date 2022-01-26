@@ -6,7 +6,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    public bool isRagdoll;
+    public bool isPaused;
+    public GameState state;
+
+    public enum GameState
+    {
+        start,
+        run,
+        finish
+    }
 
     private void Awake()
     {
@@ -23,7 +31,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        this.isPaused = false;
+        this.state = GameState.start;
     }
 
     void Update()
@@ -41,21 +50,21 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void PlayLevel1()//bool rag)
+    public void PlayLevel1()
     {
+        this.state = GameState.start;
         SceneManager.LoadScene(1);
-        //this.isRagdoll = rag;
     }
 
-    public void PlayLevel2()//bool rag)
+    public void PlayLevel2()
     {
+        this.state = GameState.start;
         SceneManager.LoadScene(2);
-        //this.isRagdoll = rag;
     }
 
-    public void PlayLevel3()//bool rag)
+    public void PlayLevel3()
     {
+        this.state = GameState.start;
         SceneManager.LoadScene(3);
-        //this.isRagdoll = rag;
     }
 }

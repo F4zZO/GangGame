@@ -10,7 +10,7 @@ public class Finish : MonoBehaviour
         if (coll.gameObject.tag.Equals("Player"))
         {
             coll.gameObject.GetComponent<PlayerUI>().showWinScreen();
-            GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(x => x.SetActive(false));
+            //GameObject.FindGameObjectsWithTag("Enemy").ToList().ForEach(x => x.SetActive(false));
             Time.timeScale = 0f;
         }
     }
