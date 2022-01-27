@@ -8,12 +8,15 @@ public class PauseMenuScript : MonoBehaviour
     public GameObject pauseMenu;
 
     private GameManager gm = GameManager.Instance;
+    private bool isLocked = true;
 
     void Update()
     {
-        
+        this.gm.start += this.UnLock;
+        this.gm.finish += this.Lock;
+        this.gm.lose += this.Lock;
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !this.isLocked)
         {
             if (this.gm.isPaused)
             {
@@ -23,6 +26,23 @@ public class PauseMenuScript : MonoBehaviour
                 Pause();
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        this.gm.start -= this.UnLock;
+        this.gm.finish -= this.Lock;
+        this.gm.lose -= this.Lock;
+    }
+
+    public void Lock()
+    {
+        this.isLocked = true;
+    }
+
+    public void UnLock()
+    {
+        this.isLocked = false;
     }
 
     public void Resume ()
