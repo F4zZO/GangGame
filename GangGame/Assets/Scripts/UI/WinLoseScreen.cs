@@ -15,7 +15,7 @@ public class WinLoseScreen : MonoBehaviour
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().buildIndex < 3)
+        if (SceneManager.GetActiveScene().buildIndex > 2)
         {
             this.btwWin1.SetActive(false);
             this.btwWin2.SetActive(false);

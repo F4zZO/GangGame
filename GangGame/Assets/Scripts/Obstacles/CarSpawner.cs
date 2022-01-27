@@ -8,20 +8,30 @@ public class CarSpawner : MonoBehaviour
     [SerializeField] private float firstCarSpawnTime;
     private float carSpawnTimer;
 
+    private bool isLocked = true;
+
     void Start()
     {
         this.carSpawnTimer = this.firstCarSpawnTime;
+        GameManager.Instance.start += this.UnLock;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isLocked) return;
+
         this.carSpawnTimer -= Time.deltaTime;
 
         if (this.carSpawnTimer <= 0.0f)
         {
             this.SpawnCar();
         }
+    }
+
+    public void UnLock()
+    {
+        this.isLocked = false;
     }
 
     public void SpawnCar()
