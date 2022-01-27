@@ -298,6 +298,7 @@ public class GangMovement : MonoBehaviour
         if (this.doJump)
         {
             this.body.velocity = Vector3.up * this.jumpForce;
+            //this.body.AddForce(Vector3.up * this.jumpForce * Time.fixedDeltaTime, ForceMode.Impulse);
 
             this.hasJumpUp = false;
             this.doJump = false;
