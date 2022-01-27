@@ -378,7 +378,7 @@ public class GangMovement : MonoBehaviour
     private void checkForHangable()
     {
         RaycastHit[] hits;
-        hits = Physics.SphereCastAll(this.transform.position, 1, Vector3.forward, 5);
+        hits = Physics.SphereCastAll(this.transform.position, 2, Vector3.forward, 5);
         foreach (RaycastHit hit in hits)
         {
             Hangable tryHang = hit.transform.gameObject.GetComponent<Hangable>();

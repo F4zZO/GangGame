@@ -50,7 +50,7 @@ public class Hangable : MonoBehaviour
         this.hangingRB = hangingRB;
         if (!attached)
         {
-            GetComponent<Rigidbody>().AddForce(dir * 750, ForceMode.Acceleration);
+            GetComponent<Rigidbody>().AddRelativeForce(dir * 750, ForceMode.Acceleration);
             attached = true;
         }
     }
