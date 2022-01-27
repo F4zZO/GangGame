@@ -8,6 +8,7 @@ public class WinLoseScreen : MonoBehaviour
 {
     public GameObject WinScreen;
     public GameObject LoseScreen;
+    public GameObject TimerScreen;
 
     [SerializeField] private GameObject btwWin1;
     [SerializeField] private GameObject btwWin2;
@@ -19,31 +20,42 @@ public class WinLoseScreen : MonoBehaviour
             this.btwWin1.SetActive(false);
             this.btwWin2.SetActive(false);
         }
+        GameManager.Instance.finish += ShowWinScreen;
+        GameManager.Instance.lose += ShowLoseScreen;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.finish -= ShowWinScreen;
+        GameManager.Instance.lose -= ShowLoseScreen;
+    }
+
+    public void ShowWinScreen()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        this.WinScreen.SetActive(true);
+        this.TimerScreen.SetActive(false);
+    }
+
+    public void ShowLoseScreen()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        this.LoseScreen.SetActive(true);
+        this.TimerScreen.SetActive(false);
     }
 
     public void PlayAgain()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1f;
+        GameManager.Instance.ReloadScene();
     }
 
     public void NextLevel()
     {
-        if (SceneManager.GetActiveScene().buildIndex < 3)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            Time.timeScale = 1f;
-        }
-        else
-        {
-            SceneManager.LoadScene("MainMenu");
-            Time.timeScale = 1f;
-        }
+        GameManager.Instance.PlayNextLevel();
     }
 
     public void MainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
-        Time.timeScale = 1f;
+        GameManager.Instance.PlayMainMenu();
     }
 }

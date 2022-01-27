@@ -9,13 +9,21 @@ public class TimeKeeper : MonoBehaviour
 
     private float startTime;
 
+    private bool isStarted = false;
+
+    private void Start()
+    {
+        GameManager.Instance.start += StartTimer;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.start -= StartTimer;
+    }
+
     void Update()
     {
-        if (GameManager.Instance.state == GameManager.GameState.start)
-        {
-            this.startTime = Time.time;
-            return;
-        }
+        if (!this.isStarted) return;
 
         float time = Time.time - startTime;
 
@@ -30,5 +38,11 @@ public class TimeKeeper : MonoBehaviour
         {
             this.timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
         }
+    }
+
+    public void StartTimer()
+    {
+        this.isStarted = true;
+        this.startTime = Time.time;
     }
 }

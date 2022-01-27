@@ -19,8 +19,6 @@ public class Countdown : MonoBehaviour
 
     IEnumerator CountdownToStart()
     {
-        GameManager.Instance.state = GameManager.GameState.start;
-
         while (this.waitTime > 0)
         {
             yield return new WaitForSeconds(1f);
@@ -40,9 +38,9 @@ public class Countdown : MonoBehaviour
             this.countdown--;
         }
 
-        this.CountdownTxt.GetComponent<TextMeshProUGUI>().text = "GO";
+        GameManager.Instance.StartPlay();
 
-        GameManager.Instance.state = GameManager.GameState.run;
+        this.CountdownTxt.GetComponent<TextMeshProUGUI>().text = "GO";
 
         yield return new WaitForSeconds(1f);
 

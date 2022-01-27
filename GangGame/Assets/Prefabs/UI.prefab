@@ -1389,6 +1389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WinScreen: {fileID: 543120670276153532}
   LoseScreen: {fileID: 4242135624914542004}
+  TimerScreen: {fileID: 2712685678199987131}
   btwWin1: {fileID: 2819739244596110553}
   btwWin2: {fileID: 653249798998038520}
 --- !u!114 &4598083819165857308
