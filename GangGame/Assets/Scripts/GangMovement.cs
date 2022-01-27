@@ -1,5 +1,7 @@
+using System.Collections;
 using System.Timers;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GangMovement : MonoBehaviour
 {
@@ -12,9 +14,11 @@ public class GangMovement : MonoBehaviour
     [SerializeField] private float currentSpeed;
     [SerializeField] private PlayerState playerState;
 
+    [SerializeField] private bool isLocked = true;
+
     [SerializeField] private bool isGrounded = false;
     [SerializeField] private bool canMove = false;
-    [SerializeField] private bool canJump = false;
+    [SerializeField] private bool hasJumpUp = false;
     [SerializeField] private bool isFalling = false;
     [SerializeField] private bool isLanding = false;
     [SerializeField] private bool isTwerking = false;
@@ -48,9 +52,9 @@ public class GangMovement : MonoBehaviour
     private Vector3 direction;
     private PlayerState lastState;
 
-    private Timer timerJumpCD; 
-    private Timer timerFall;
-    private Timer timerLand;
+    //private Timer timerJumpCD; 
+    //private Timer timerFall;
+    //private Timer timerLand;
 
     private enum PlayerState
     {
@@ -67,8 +71,14 @@ public class GangMovement : MonoBehaviour
 
     void Start()
     {
+        if (GameManager.Instance == null)
+        {
+            SceneManager.LoadScene(0);
+        }
+
         Cursor.lockState = CursorLockMode.Locked;
 
+        /*
         this.timerJumpCD = new Timer();
         this.timerJumpCD.Elapsed += this.EndJumpCD;
 
@@ -76,14 +86,21 @@ public class GangMovement : MonoBehaviour
         this.timerFall.Elapsed += this.EndFall;
 
         this.timerLand = new Timer();
-        this.timerLand.Elapsed += this.EndLand;
+        this.timerLand.Elapsed += this.EndLand; */
 
-        this.canJump = true;
+        this.hasJumpUp = true;
+
+        GameManager.Instance.start += this.Unlock;
     }
-    
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.start -= this.Unlock;
+    }
+
     void Update()
     {
-        if (GameManager.Instance.state == GameManager.GameState.start) return;
+        if (this.isLocked) return;
 
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
@@ -111,7 +128,7 @@ public class GangMovement : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(KeyCode.Space) && this.canMove && this.canJump && !this.isLanding)
+        if (Input.GetKey(KeyCode.Space) && this.canMove && this.hasJumpUp && !this.isLanding)
         {
             this.doJump = true;
             this.playerState = PlayerState.jump;
@@ -134,8 +151,11 @@ public class GangMovement : MonoBehaviour
         {
             if (!this.timerFall.Enabled)
             {
+                StartCoroutine(FallTime());
+                /*
                 this.timerFall.Interval = this.fallTime;
                 this.timerFall.Start();
+                */
             }
             if (this.isFalling)
             {
@@ -221,11 +241,13 @@ public class GangMovement : MonoBehaviour
             {
                 this.isFalling = false;
                 this.isLanding = true;
+                StartCoroutine(LandTime());
+                /*
                 this.timerLand.Interval = this.landTime;
-                this.timerLand.Start();
+                this.timerLand.Start(); */
             }
 
-            if (!this.canJump && !this.timerJumpCD.Enabled)
+            if (!this.hasJumpUp && !this.timerJumpCD.Enabled)
             {
                 this.timerJumpCD.Interval = this.jumpCD;
                 this.timerJumpCD.Start();
@@ -269,16 +291,41 @@ public class GangMovement : MonoBehaviour
         {
             this.body.velocity = Vector3.up * this.jumpForce;
 
-            this.canJump = false;
+            this.hasJumpUp = false;
             this.doJump = false;
         }
     }
 
+    public void Unlock()
+    {
+        this.isLocked = false;
+    }
+
+    IEnumerator JumpCD()
+    {
+        yield return new WaitForSeconds(this.jumpCD);
+
+        this.hasJumpUp = true;
+    }
+    IEnumerator FallTime()
+    {
+        yield return new WaitForSeconds(this.jumpCD);
+
+        this.hasJumpUp = true;
+    }
+    IEnumerator LandTime()
+    {
+        yield return new WaitForSeconds(this.jumpCD);
+
+        this.hasJumpUp = true;
+    }
+
+    /*
     public void EndJumpCD(object source, ElapsedEventArgs e)
     {
         this.canJump = true;
         this.timerJumpCD.Stop();
-    }
+    } 
 
     public void EndFall(object source, ElapsedEventArgs e)
     {
@@ -291,7 +338,8 @@ public class GangMovement : MonoBehaviour
         this.isLanding = false;
         this.timerLand.Stop();
     }
-
+    */
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.tag == "Death")
@@ -313,7 +361,6 @@ public class GangMovement : MonoBehaviour
             catch
             { }
         }
-    }
 
     /*
     private void OnTriggerEnter(Collider collision)
