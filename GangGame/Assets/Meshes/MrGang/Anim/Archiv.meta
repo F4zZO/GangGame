@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:GangGame/Assets/Meshes/MrGang/Anim/Archiv.meta
 guid: 0737079b5bb442045b8b2939b9e3173e
 folderAsset: yes
 DefaultImporter:
+=======
+guid: f5080ce6b27307b4da80e6d3f3c1e10b
+PrefabImporter:
+>>>>>>> FeaturesRSPPPrototype:GangGame/Assets/Prefabs/PressurePlates/RockPressurePlate.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 

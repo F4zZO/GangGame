@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:GangGame/Assets/copy/gangman.unitypackage.meta
 guid: 1697e803b40425b4cbd685fe1511ed99
 DefaultImporter:
+=======
+guid: 60dd1a0b18aafd143b50cdff0b297a5d
+PrefabImporter:
+>>>>>>> FeaturesRSPPPrototype:GangGame/Assets/Prefabs/PressurePlates/PressurePlate.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
