@@ -52,9 +52,10 @@ public class GangMovement : MonoBehaviour
     private Vector3 direction;
     private PlayerState lastState;
 
-    //private Timer timerJumpCD; 
-    //private Timer timerFall;
-    //private Timer timerLand;
+    private bool FallIsRunning = false; 
+    private bool JumpIsRunning = false;
+
+    private Coroutine FallCoroutine;
 
     private enum PlayerState
     {
@@ -77,16 +78,6 @@ public class GangMovement : MonoBehaviour
         }
 
         Cursor.lockState = CursorLockMode.Locked;
-
-        /*
-        this.timerJumpCD = new Timer();
-        this.timerJumpCD.Elapsed += this.EndJumpCD;
-
-        this.timerFall = new Timer();
-        this.timerFall.Elapsed += this.EndFall;
-
-        this.timerLand = new Timer();
-        this.timerLand.Elapsed += this.EndLand; */
 
         this.hasJumpUp = true;
 
@@ -149,22 +140,19 @@ public class GangMovement : MonoBehaviour
 
         if (this.body.velocity.y < -0.5 && !this.isGrounded)
         {
-            if (!this.timerFall.Enabled)
+            if (!this.FallIsRunning)
             {
-                StartCoroutine(FallTime());
-                /*
-                this.timerFall.Interval = this.fallTime;
-                this.timerFall.Start();
-                */
+                FallCoroutine = StartCoroutine(FallTime());
             }
             if (this.isFalling)
             {
                 this.playerState = PlayerState.fall;
             }
         }
-        else
+        else if (this.FallIsRunning)
         {
-            this.timerFall.Stop();
+            StopCoroutine(FallCoroutine);
+            this.FallIsRunning = false;
         }
 
         if (Input.GetKeyDown(KeyCode.T))
@@ -242,15 +230,11 @@ public class GangMovement : MonoBehaviour
                 this.isFalling = false;
                 this.isLanding = true;
                 StartCoroutine(LandTime());
-                /*
-                this.timerLand.Interval = this.landTime;
-                this.timerLand.Start(); */
             }
 
-            if (!this.hasJumpUp && !this.timerJumpCD.Enabled)
+            if (!this.hasJumpUp && !this.JumpIsRunning)
             {
-                this.timerJumpCD.Interval = this.jumpCD;
-                this.timerJumpCD.Start();
+                StartCoroutine(JumpCD());
             }
         }
         else
@@ -303,91 +287,30 @@ public class GangMovement : MonoBehaviour
 
     IEnumerator JumpCD()
     {
+        this.JumpIsRunning = true;
+
         yield return new WaitForSeconds(this.jumpCD);
 
         this.hasJumpUp = true;
+
+        this.JumpIsRunning = false;
     }
+
     IEnumerator FallTime()
     {
-        yield return new WaitForSeconds(this.jumpCD);
+        this.FallIsRunning = true;
 
-        this.hasJumpUp = true;
+        yield return new WaitForSeconds(this.fallTime);
+
+        this.isFalling = true;
+
+        this.FallIsRunning = false;
     }
+
     IEnumerator LandTime()
     {
-        yield return new WaitForSeconds(this.jumpCD);
+        yield return new WaitForSeconds(this.landTime);
 
-        this.hasJumpUp = true;
-    }
-
-    /*
-    public void EndJumpCD(object source, ElapsedEventArgs e)
-    {
-        this.canJump = true;
-        this.timerJumpCD.Stop();
-    } 
-
-    public void EndFall(object source, ElapsedEventArgs e)
-    {
-        this.isFalling = true;
-        this.timerFall.Stop();
-    }
-
-    public void EndLand(object source, ElapsedEventArgs e)
-    {
         this.isLanding = false;
-        this.timerLand.Stop();
     }
-    */
-    /*
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag == "Death")
-        {
-            try
-            {
-                GameManager.Instance.ReloadScene();
-            }
-            catch
-            {}
-        }
-
-        if (collision.collider.tag == "Win")
-        {
-            try
-            {
-                GameManager.Instance.Win();
-            }
-            catch
-            { }
-        }
-
-    /*
-    private void OnTriggerEnter(Collider collision)
-    {
-        if (collision.tag == "Floor")
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.tag == "Floor")
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-    }
-
-    if (this.playerState != PlayerState.fall && this.playerState != PlayerState.ragdoll && this.isGrounded)
-    {
-        this.canMove = true;
-    }
-    else
-    {
-        this.canMove = false;
-    }       
-     */
 }
