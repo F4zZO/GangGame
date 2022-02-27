@@ -6,11 +6,15 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    public float lvl = 0;
+    public int rating = 0;
+    public float time;
     public bool isPaused;
     public delegate void Delegate();
     public Delegate start;
     public Delegate finish;
     public Delegate lose;
+    public Delegate getTime;
 
     private GameState state;
 
@@ -60,6 +64,8 @@ public class GameManager : MonoBehaviour
     public void Win()
     {
         this.state = GameState.finish;
+        this.getTime();
+        this.RateRun();
         this.finish();
     }
 
@@ -72,6 +78,7 @@ public class GameManager : MonoBehaviour
     public void PlayMainMenu()
     {
         Time.timeScale = 1f;
+        this.lvl = 0;
         SceneManager.LoadScene(0);
     }
 
@@ -97,6 +104,7 @@ public class GameManager : MonoBehaviour
     public void PlayLevel1()
     {
         Time.timeScale = 1f;
+        this.lvl = 1;
         this.state = GameState.start;
         SceneManager.LoadScene(1);
     }
@@ -104,6 +112,7 @@ public class GameManager : MonoBehaviour
     public void PlayLevel2()
     {
         Time.timeScale = 1f;
+        this.lvl = 2;
         this.state = GameState.start;
         SceneManager.LoadScene(2);
     }
@@ -111,7 +120,17 @@ public class GameManager : MonoBehaviour
     public void PlayLevel3()
     {
         Time.timeScale = 1f;
+        this.lvl = 3;
         this.state = GameState.start;
         SceneManager.LoadScene(3);
+    }
+
+    private void RateRun()
+    {
+        this.rating = 1;
+        if (this.time > 60f) return;
+        this.rating = 2;
+        if (this.time > 30f) return;
+        this.rating = 3;
     }
 }

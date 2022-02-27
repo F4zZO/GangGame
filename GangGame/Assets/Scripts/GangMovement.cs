@@ -87,11 +87,13 @@ public class GangMovement : MonoBehaviour
         this.hasJumpUp = true;
 
         GameManager.Instance.start += this.Unlock;
+        GameManager.Instance.finish += this.Lock;
     }
 
     private void OnDestroy()
     {
         GameManager.Instance.start -= this.Unlock;
+        GameManager.Instance.finish -= this.Lock;
     }
 
     void Update()
@@ -233,6 +235,8 @@ public class GangMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (this.isLocked) return;
+
         if (this.body.velocity.y < 0)
         {
             this.body.velocity += Vector3.up * Physics.gravity.y * fallForce * Time.deltaTime;
@@ -242,10 +246,14 @@ public class GangMovement : MonoBehaviour
             this.body.velocity += Vector3.up * Physics.gravity.y * fallForce * Time.deltaTime;
         }
 
-        RaycastHit hits;
+        /*RaycastHit hits;
 
-        if (Physics.SphereCast(transform.position, 1f, Vector3.down, out hits, this.groundDistance) && this.body.velocity.y < 0.1)    
-            //Raycast(transform.position, Vector3.down, this.groundDistance) && this.body.velocity.y < 0.1)// && this.body.velocity.y > -0.5)
+        if (Physics.//SphereCast(transform.position, 1f, Vector3.down, out hits, this.groundDistance) && this.body.velocity.y < 0.1)    
+            Raycast(transform.position, Vector3.down, this.groundDistance) && this.body.velocity.y < 0.1)// && this.body.velocity.y > -0.5)
+        {*/
+
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position, 0.5f, Vector3.down, this.groundDistance);
+        if (hits.Length > 2 && this.body.velocity.y < 0.5)
         {
             this.isGrounded = true;
 
@@ -303,7 +311,9 @@ public class GangMovement : MonoBehaviour
         if (this.doJump)
         {
             this.body.velocity = Vector3.up * this.jumpForce;
-            //this.body.AddForce(Vector3.up * this.jumpForce * Time.fixedDeltaTime, ForceMode.Impulse);
+            this.body.AddForce(Vector3.up * 5 * Time.fixedDeltaTime, ForceMode.Impulse);
+
+            
 
             this.hasJumpUp = false;
             this.doJump = false;
@@ -366,6 +376,13 @@ public class GangMovement : MonoBehaviour
     public void Unlock()
     {
         this.isLocked = false;
+    }
+    public void Lock()
+    {
+        this.isLocked = true;
+        this.isTwerking = true;
+
+        this.animator.Play("twerk");
     }
 
     IEnumerator JumpCD()
