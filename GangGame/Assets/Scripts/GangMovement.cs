@@ -57,6 +57,8 @@ public class GangMovement : MonoBehaviour
     private bool FallIsRunning = false; 
     private bool JumpIsRunning = false;
 
+    private bool canHang = true;
+
     private Coroutine FallCoroutine;
 
     private enum PlayerState
@@ -141,7 +143,7 @@ public class GangMovement : MonoBehaviour
             this.playerState = PlayerState.jump;
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && this.canHang)
         {
             checkForHangable();
         }
@@ -151,7 +153,7 @@ public class GangMovement : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.Space) && this.isHanging)
         {
-            stopHanging();
+            StopHanging();
         }
 
         if (this.body.velocity.y < -0.5 && !this.isGrounded)
@@ -308,7 +310,7 @@ public class GangMovement : MonoBehaviour
     private void checkForHangable()
     {
         RaycastHit[] hits;
-        hits = Physics.SphereCastAll(this.transform.position, 1, Vector3.forward, 5);
+        hits = Physics.SphereCastAll(this.transform.position, 2.5f, Vector3.forward, 5);
         foreach (RaycastHit hit in hits)
         {
             Hangable tryHang = hit.transform.gameObject.GetComponent<Hangable>();
@@ -337,21 +339,25 @@ public class GangMovement : MonoBehaviour
         {
             if (this.gameObject.GetComponent<FixedJoint>() == null)
                 this.gameObject.AddComponent<FixedJoint>().connectedBody = objRigidBody;
-
-            this.hangingTo.Attach(direction, this.GetComponent<Rigidbody>());
+            if (!isHanging)
+            {
+                this.hangingTo.Attach(direction, this.GetComponent<Rigidbody>());
+            }
             this.isHanging = true;
             this.playerState = PlayerState.hang;
             this.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 
-    private void stopHanging()
+    public void StopHanging()
     {
+        StartCoroutine(HangCD());
         this.isHanging = false;
         this.playerState = PlayerState.fall;
+        Debug.Log("Destroy Joint");
+        Destroy(this.GetComponent<FixedJoint>());
         this.hangingTo.Detach();
         this.hangingTo = null;
-        Destroy(this.GetComponent<FixedJoint>());
     }
 
     public void Unlock()
@@ -386,5 +392,12 @@ public class GangMovement : MonoBehaviour
         yield return new WaitForSeconds(this.landTime);
 
         this.isLanding = false;
+    }
+
+    IEnumerator HangCD()
+    {
+        this.canHang = false;
+        yield return new WaitForSeconds(0.2f);
+        this.canHang = true;
     }
 }

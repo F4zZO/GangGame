@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PPMoveGameObject : MonoBehaviour
+public class PPMoveGameObject : PressurePlateAction
 {
     [SerializeField] private float _moveSpeed = .5f;
     [SerializeField] private Vector3 _startPos;
@@ -13,7 +13,7 @@ public class PPMoveGameObject : MonoBehaviour
     void Start()
     {
         _target = this.transform.position;
-        this.transform.localPosition = _target - _startPos;
+        this.transform.position = _target - _startPos;
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class PPMoveGameObject : MonoBehaviour
             this.transform.position = Vector3.MoveTowards(this.transform.position, _target, _moveSpeed);
     }
 
-    public void PressurePlateActivate()
+    public override void Started()
     {
         _started = true;
     }
