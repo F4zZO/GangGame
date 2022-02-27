@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public Delegate finish;
     public Delegate lose;
 
+    public Color playercolor;
+
     private GameState state;
 
     public enum GameState

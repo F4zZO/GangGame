@@ -7,10 +7,13 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     //[SerializeField] private Toggle t;
+    [SerializeField] private Material material;
 
     private void Start()
     {
         Cursor.lockState = CursorLockMode.None;
+
+        this.material.color = GameManager.Instance.playercolor;
     }
 
     public void PlayLevel1 ()

@@ -750,7 +750,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6217013540139571456}
-  m_LocalRotation: {x: 0.04969128, y: -0.00000013959342, z: 0.000000012490863, w: 0.99876463}
+  m_LocalRotation: {x: 0.04969128, y: -0.00000013941232, z: 0.000000012481377, w: 0.99876463}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -950,7 +950,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6217013540617994899}
-  m_LocalRotation: {x: 0.11899744, y: -0.00000014160506, z: 0.000000022680114, w: 0.9928946}
+  m_LocalRotation: {x: 0.118997425, y: -0.00000015562702, z: 0.00000002493568, w: 0.9928946}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1026,7 +1026,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6217013540623557557}
-  m_LocalRotation: {x: 0.019868428, y: 0.00000015771725, z: -0.0000000031049747, w: 0.9998026}
+  m_LocalRotation: {x: 0.019868428, y: 0.00000015758138, z: -0.0000000031090055, w: 0.9998026}
   m_LocalPosition: {x: 0, y: 3, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1225,7 +1225,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6217013541097597123}
-  m_LocalRotation: {x: 0.0000000055879354, y: -7.8412654e-10, z: 1.922018e-12, w: 1}
+  m_LocalRotation: {x: 0.000000011175871, y: -5.957759e-10, z: 1.1672885e-12, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1723,6 +1723,7 @@ MonoBehaviour:
   body: {fileID: 8912687991433682071}
   cam: {fileID: 8912687990752005435}
   animator: {fileID: 8912687991188577212}
+  material: {fileID: -4125471728267972529, guid: fb4b73d1bbd767348b05f9d384007f29, type: 3}
   currentSpeed: 0
   playerState: 0
   isLocked: 1
@@ -1732,6 +1733,8 @@ MonoBehaviour:
   isFalling: 0
   isLanding: 0
   isTwerking: 0
+  isHanging: 0
+  hangingTo: {fileID: 0}
   doJump: 0
   fastJump: 0
   walkSpeed: 4
@@ -1773,7 +1776,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8912687990752005428}
-  m_LocalRotation: {x: 0.019868428, y: 0.00000015796448, z: -0.0000000030979765, w: 0.9998026}
+  m_LocalRotation: {x: 0.019868428, y: 0.00000015771725, z: -0.0000000031049747, w: 0.9998026}
   m_LocalPosition: {x: 0, y: 3, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

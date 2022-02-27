@@ -9,6 +9,7 @@ public class GangMovement : MonoBehaviour
     [SerializeField] private Rigidbody body;
     [SerializeField] private Transform cam;
     [SerializeField] private Animator animator;
+    [SerializeField] private Material material;
 
     [Header("--- GENERAL ---")]
     [SerializeField] private float currentSpeed;
@@ -87,6 +88,8 @@ public class GangMovement : MonoBehaviour
         this.hasJumpUp = true;
 
         GameManager.Instance.start += this.Unlock;
+
+        this.material.color = GameManager.Instance.playercolor;
     }
 
     private void OnDestroy()
