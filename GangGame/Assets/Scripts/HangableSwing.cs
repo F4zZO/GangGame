@@ -25,7 +25,7 @@ public class HangableSwing : Hangable
         rb = GetComponent<Rigidbody>();
         oldpos = transform.position;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (attached && Input.GetKey(KeyCode.W))
         {
