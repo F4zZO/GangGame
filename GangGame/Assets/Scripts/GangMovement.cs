@@ -249,7 +249,7 @@ public class GangMovement : MonoBehaviour
             this.body.velocity += Vector3.up * Physics.gravity.y * fallForce * Time.deltaTime;
         }
 
-        RaycastHit[] hits = Physics.SphereCastAll(transform.position,0.5f,Vector3.down ,this.groundDistance);
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position,0.3f,Vector3.down ,this.groundDistance);
         Debug.Log(hits.Length);
         if (hits.Length > 2 && this.body.velocity.y < 0.1)    
             //Raycast(transform.position, Vector3.down, this.groundDistance) && this.body.velocity.y < 0.1)// && this.body.velocity.y > -0.5)
@@ -320,7 +320,7 @@ public class GangMovement : MonoBehaviour
     private void checkForHangable()
     {
         RaycastHit[] hits;
-        hits = Physics.SphereCastAll(this.transform.position, 2.5f, Vector3.forward, 5);
+        hits = Physics.SphereCastAll(this.transform.position, 2f, Vector3.forward, 3);
         foreach (RaycastHit hit in hits)
         {
             Hangable tryHang = hit.transform.gameObject.GetComponent<Hangable>();
