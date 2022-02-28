@@ -5,7 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 public static class SaveSystem
 {
 
-    private static string path = Application.persistentDataPath + "/savetest";
+    private static string path = Application.persistentDataPath + "/savefinal";
 
     public static void SaveData (GameManager gm)
     {
