@@ -11,7 +11,6 @@ public class AttachToPlatform : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("now");
             collision.transform.parent = transform;
         }
     }

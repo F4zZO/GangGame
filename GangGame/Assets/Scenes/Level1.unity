@@ -2282,6 +2282,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goal
       objectReference: {fileID: 0}
+    - target: {fileID: 4156728063257938828, guid: ec26de39f6e825348a5ec74a556a15b2, type: 3}
+      propertyPath: Music
+      value: 
+      objectReference: {fileID: 1879540453}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec26de39f6e825348a5ec74a556a15b2, type: 3}
 --- !u!1 &154826344
@@ -25971,6 +25975,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2011462700262112833, guid: 87be26d564154b24882e0614f1d42508, type: 3}
+      propertyPath: m_Volume
+      value: 0.182
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011462700262112833, guid: 87be26d564154b24882e0614f1d42508, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2011462700262112833, guid: 87be26d564154b24882e0614f1d42508, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 77fe17c2240b04246929fdf1b0e3cd6a, type: 3}
     - target: {fileID: 2011462700262112835, guid: 87be26d564154b24882e0614f1d42508, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -26065,6 +26081,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87be26d564154b24882e0614f1d42508, type: 3}
+--- !u!1 &1879540453 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2011462700262112840, guid: 87be26d564154b24882e0614f1d42508, type: 3}
+  m_PrefabInstance: {fileID: 1879540452}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1880059018
 GameObject:
   m_ObjectHideFlags: 0
@@ -28620,11 +28641,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6217013540139571470, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000013389158
+      value: -0.00000013973138
       objectReference: {fileID: 0}
     - target: {fileID: 6217013540139571470, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000011952846
+      value: 0.000000012491249
       objectReference: {fileID: 0}
     - target: {fileID: 6217013540617994897, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -28636,11 +28657,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6217013540617994897, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000011524026
+      value: -0.00000015604884
       objectReference: {fileID: 0}
     - target: {fileID: 6217013540617994897, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000018425046
+      value: 0.00000002498442
       objectReference: {fileID: 0}
     - target: {fileID: 6217013540623557554, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -28664,11 +28685,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6217013540623557554, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000116160194
+      value: 0.00000015762292
       objectReference: {fileID: 0}
     - target: {fileID: 6217013540623557554, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000022778668
+      value: -0.0000000031098386
       objectReference: {fileID: 0}
     - target: {fileID: 6217013540623557555, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_YAxis.m_InvertInput
@@ -28704,11 +28725,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6217013541097597121, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0000000012858692
+      value: -9.452634e-10
       objectReference: {fileID: 0}
     - target: {fileID: 6217013541097597121, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -4.659384e-12
+      value: -3.6219916e-12
       objectReference: {fileID: 0}
     - target: {fileID: 8606751967864751047, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_Name
@@ -28740,11 +28761,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8912687990752005435, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000116160194
+      value: 0.00000015762292
       objectReference: {fileID: 0}
     - target: {fileID: 8912687990752005435, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000022778668
+      value: -0.0000000031098386
       objectReference: {fileID: 0}
     - target: {fileID: 8912687990851211243, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_Layer
@@ -29232,5 +29253,9 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4690994187142280227, guid: aa0c03b8a9e0a8140a6814b7db5f1f6d, type: 3}
+      propertyPath: Music
+      value: 
+      objectReference: {fileID: 1879540453}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa0c03b8a9e0a8140a6814b7db5f1f6d, type: 3}
