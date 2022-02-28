@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4500668923149335752
+--- !u!1 &2553715025824383947
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,46 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3836581064361698930}
-  - component: {fileID: 185102455637010903}
-  - component: {fileID: 2699181173809814813}
-  - component: {fileID: 4500668923149335751}
+  - component: {fileID: 2898997533573863793}
+  - component: {fileID: 2275608024148629204}
+  - component: {fileID: 4066858460962660894}
+  - component: {fileID: 2553715025824383945}
+  - component: {fileID: 2553715025824383946}
   m_Layer: 0
-  m_Name: PP_Rock_Moss_Grown_11
+  m_Name: OnOffPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3836581064361698930
+--- !u!4 &2898997533573863793
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4500668923149335752}
-  m_LocalRotation: {x: 0.000000004423782, y: 0.000000014813848, z: -0.0000000023283062, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 2553715025824383947}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 15.7, y: -5.99, z: 49.91}
+  m_LocalScale: {x: 25.076433, y: 25.076433, z: 25.076433}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &185102455637010903
+--- !u!33 &2275608024148629204
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4500668923149335752}
-  m_Mesh: {fileID: -1806810134458854372, guid: 7ed75b99c26237b4d844c1581c5da1b2, type: 3}
---- !u!23 &2699181173809814813
+  m_GameObject: {fileID: 2553715025824383947}
+  m_Mesh: {fileID: -856059019632272089, guid: 8c2621fae646ccd4e8378a2f2c3bcd69, type: 3}
+--- !u!23 &4066858460962660894
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4500668923149335752}
+  m_GameObject: {fileID: 2553715025824383947}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -60,7 +61,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0799a1e95665ef14f8fe2cbcd4ba3dc4, type: 2}
+  - {fileID: -6126091556477775235, guid: 8c2621fae646ccd4e8378a2f2c3bcd69, type: 3}
+  - {fileID: -1114199533890271507, guid: 8c2621fae646ccd4e8378a2f2c3bcd69, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -82,17 +84,36 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4500668923149335751
+--- !u!64 &2553715025824383945
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4500668923149335752}
+  m_GameObject: {fileID: 2553715025824383947}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
   m_CookingOptions: 30
-  m_Mesh: {fileID: -1806810134458854372, guid: 7ed75b99c26237b4d844c1581c5da1b2, type: 3}
+  m_Mesh: {fileID: -856059019632272089, guid: 8c2621fae646ccd4e8378a2f2c3bcd69, type: 3}
+--- !u!95 &2553715025824383946
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2553715025824383947}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 35b70fb67b0d6f7429d26e66d7bf4c76, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
