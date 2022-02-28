@@ -7080,7 +7080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6217013541097597121, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000029802319
+      value: 0.000000024214383
       objectReference: {fileID: 0}
     - target: {fileID: 6217013541097597121, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_LocalRotation.y
@@ -8172,6 +8172,18 @@ PrefabInstance:
     - target: {fileID: 4920759549698686180, guid: 21d6c96159e976d4f85dfcd4bf217e2b, type: 3}
       propertyPath: m_Name
       value: SwingAnchor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938590016049240104, guid: 21d6c96159e976d4f85dfcd4bf217e2b, type: 3}
+      propertyPath: angleIncrease
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938590016049240104, guid: 21d6c96159e976d4f85dfcd4bf217e2b, type: 3}
+      propertyPath: swingDuration
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938590016049240104, guid: 21d6c96159e976d4f85dfcd4bf217e2b, type: 3}
+      propertyPath: attachmentPush
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8938590016093101778, guid: 21d6c96159e976d4f85dfcd4bf217e2b, type: 3}
       propertyPath: m_ConnectedAnchor.x
