@@ -58,7 +58,7 @@ public class WinLoseScreen : MonoBehaviour
 
         if(GameManager.Instance.rating == 3)
         {
-            this.UnlockImage.GetComponent<Image>().sprite = this.UnlockSprites[(int)GameManager.Instance.lvl];
+            //this.UnlockImage.GetComponent<Image>().sprite = this.UnlockSprites[(int)GameManager.Instance.lvl];
             this.Unlock.SetActive(true);
         }
         else
