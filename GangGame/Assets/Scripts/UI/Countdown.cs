@@ -8,6 +8,7 @@ public class Countdown : MonoBehaviour
     [SerializeField] private GameObject CountdownUI;
     [SerializeField] private GameObject Header;
     [SerializeField] private GameObject CountdownTxt;
+    [SerializeField] private GameObject Sound;
 
     private float waitTime = 2;
     private int countdown = 3;
@@ -28,6 +29,8 @@ public class Countdown : MonoBehaviour
 
         this.Header.SetActive(false);
         this.CountdownTxt.SetActive(true);
+
+        Sound.GetComponent<AudioSource>().Play();
 
         while (this.countdown > 0)
         {
