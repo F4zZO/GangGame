@@ -9,14 +9,14 @@ public class ApplyColor : MonoBehaviour
 
     private void Start()
     {
-        if (GameManager.Instance.playercolor == new Color(0, 0, 0, 0)) return;
+        if (GameManager.Instance.playerColor == new Color(0, 0, 0, 0)) return;
 
-        this.fcp.color = GameManager.Instance.playercolor;
+        this.fcp.color = GameManager.Instance.playerColor;
     }
 
     private void Update()
     {
         material.color = fcp.color;
-        GameManager.Instance.playercolor = fcp.color;
+        GameManager.Instance.playerColor = fcp.color;
     }
 }

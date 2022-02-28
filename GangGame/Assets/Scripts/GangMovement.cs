@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Timers;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class GangMovement : MonoBehaviour
     [SerializeField] private Rigidbody body;
     [SerializeField] private Transform cam;
     [SerializeField] private Animator animator;
+    [SerializeField] private Material material;
+    [SerializeField] private GameObject[] coolHat;
 
     [Header("--- GENERAL ---")]
     [SerializeField] private float currentSpeed;
@@ -87,7 +90,10 @@ public class GangMovement : MonoBehaviour
         this.hasJumpUp = true;
 
         GameManager.Instance.start += this.Unlock;
-        GameManager.Instance.finish += this.Lock;
+        GameManager.Instance.finish += this.Lock; 
+
+        this.material.color = GameManager.Instance.playerColor;
+        this.setHat(GameManager.Instance.playerHat);
     }
 
     private void OnDestroy()
@@ -384,6 +390,14 @@ public class GangMovement : MonoBehaviour
 
         this.animator.Play("twerk");
     }
+
+    private void setHat(int hat)
+    {
+        if (hat == 0) return;
+
+        this.coolHat[hat - 1].SetActive(true);
+    }
+
 
     IEnumerator JumpCD()
     {

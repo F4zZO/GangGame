@@ -16,7 +16,13 @@ public class GameManager : MonoBehaviour
     public Delegate lose;
     public Delegate getTime;
 
-    public Color playercolor;
+    public Data data;
+
+    public Color playerColor; 
+    public int playerHat;
+
+    public bool[] hasHat;
+    public float[] highScores;
 
     private GameState state;
 
@@ -44,6 +50,30 @@ public class GameManager : MonoBehaviour
     {
         this.isPaused = false;
         this.state = GameState.run;
+
+        this.hasHat = new bool[3];
+        this.highScores = new float[3];
+
+        this.highScores[0] = 0;
+        this.highScores[1] = 0;
+        this.highScores[2] = 0;
+
+        this.data = SaveSystem.LoadData();
+
+        if(this.data == null)
+        {
+            SaveSystem.SaveData(this);
+        }
+
+        this.playerHat = this.data.selectedHat;
+
+        this.playerColor.r = this.data.selectedColor[0];
+        this.playerColor.g = this.data.selectedColor[1];
+        this.playerColor.b = this.data.selectedColor[2];
+
+        this.hasHat = this.data.hasHats;
+
+        this.highScores = this.data.highScore;
     }
 
     void Update()
@@ -56,6 +86,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         this.state = GameState.start;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void SaveGame()
+    {
+        SaveSystem.SaveData(this);
     }
 
     public void StartPlay()
@@ -105,6 +140,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayLevel1()
     {
+        this.SaveGame();
         Time.timeScale = 1f;
         this.lvl = 1;
         this.state = GameState.start;
@@ -113,6 +149,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayLevel2()
     {
+        this.SaveGame();
         Time.timeScale = 1f;
         this.lvl = 2;
         this.state = GameState.start;
@@ -121,6 +158,7 @@ public class GameManager : MonoBehaviour
 
     public void PlayLevel3()
     {
+        this.SaveGame();
         Time.timeScale = 1f;
         this.lvl = 3;
         this.state = GameState.start;
@@ -129,6 +167,10 @@ public class GameManager : MonoBehaviour
 
     private void RateRun()
     {
+        if (this.time < this.highScores[(int) this.lvl - 1] || this.highScores[(int)this.lvl - 1] == 0){
+            this.highScores[(int)this.lvl - 1] = this.time;
+        }
+
         this.rating = 1;
         if (this.time > 60f) return;
         this.rating = 2;
