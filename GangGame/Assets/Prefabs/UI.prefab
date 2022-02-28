@@ -1554,7 +1554,7 @@ MonoBehaviour:
   - {fileID: 5847804879354645264}
   - {fileID: 5908745699235930805}
   Unlock: {fileID: 4790948208616722664}
-  UnlockImage: {fileID: 0}
+  UnlockImage: {fileID: 4790948208616722664}
   UnlockSprites:
   - {fileID: 0}
   - {fileID: 0}
