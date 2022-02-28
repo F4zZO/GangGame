@@ -54,9 +54,10 @@ public class GameManager : MonoBehaviour
         this.hasHat = new bool[3];
         this.highScores = new float[3];
 
+        /*
         this.highScores[0] = 0;
         this.highScores[1] = 0;
-        this.highScores[2] = 0;
+        this.highScores[2] = 0; */
 
         this.data = SaveSystem.LoadData();
 

@@ -1671,7 +1671,7 @@ GameObject:
   - component: {fileID: 617386840}
   - component: {fileID: 617386839}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Lvl1ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2500,7 +2500,7 @@ GameObject:
   - component: {fileID: 967636224}
   - component: {fileID: 967636223}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Lvl3Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4212,7 +4212,7 @@ GameObject:
   - component: {fileID: 1419064637}
   - component: {fileID: 1419064636}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Lvl2Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8418,9 +8418,9 @@ MonoBehaviour:
   - {fileID: 1264789496}
   Warning: {fileID: 730312237}
   HighScores:
-  - {fileID: 767794215}
-  - {fileID: 1381641304}
-  - {fileID: 1960334650}
+  - {fileID: 617386837}
+  - {fileID: 1419064634}
+  - {fileID: 967636221}
 --- !u!114 &5506544311164627160
 MonoBehaviour:
   m_ObjectHideFlags: 0
