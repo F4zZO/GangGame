@@ -6,21 +6,21 @@ public class AttachToPlatform : MonoBehaviour
 {
     public GameObject Player;
 
-    private void OnTriggerEnter(Collider other)
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.gameObject == Player)
+        if (collision.gameObject.tag == "Player")
         {
-            Player.transform.parent = transform;
+            Debug.Log("now");
+            collision.transform.parent = transform;
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
-        if(other.gameObject == Player)
+        if (collision.gameObject.tag == "Player")
         {
-            Player.transform.parent = null;
+            collision.transform.parent = null;
         }
     }
-
-
 }
