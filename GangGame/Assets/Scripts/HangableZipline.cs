@@ -49,11 +49,10 @@ public class HangableZipline : Hangable
                 _elapsedTime += Time.deltaTime * _speedBoost;
             }
         }   
-        if(_elapsedTime > _timeToComplete)
+
+        if(_elapsedTime > _timeToComplete - 0.06)
         {
-            _hangingRB.gameObject.GetComponent<GangMovement>().StopHanging();
-            Debug.Log("Detach Hangable");
-            Detach();
+            _started = false;
         }
         newpos = transform.position;
         var media = (newpos - oldpos);
