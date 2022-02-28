@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Timers;
 using UnityEngine;
@@ -9,6 +10,8 @@ public class GangMovement : MonoBehaviour
     [SerializeField] private Rigidbody body;
     [SerializeField] private Transform cam;
     [SerializeField] private Animator animator;
+    [SerializeField] private Material material;
+    [SerializeField] private GameObject[] coolHat;
 
     [Header("--- GENERAL ---")]
     [SerializeField] private float currentSpeed;
@@ -54,8 +57,6 @@ public class GangMovement : MonoBehaviour
     private Vector3 direction;
     private PlayerState lastState;
 
-    private Quaternion normRotation;
-
     private bool FallIsRunning = false; 
     private bool JumpIsRunning = false;
 
@@ -89,13 +90,16 @@ public class GangMovement : MonoBehaviour
         this.hasJumpUp = true;
 
         GameManager.Instance.start += this.Unlock;
+        GameManager.Instance.finish += this.Lock; 
 
-        normRotation = this.transform.rotation;
+        this.material.color = GameManager.Instance.playerColor;
+        this.setHat(GameManager.Instance.playerHat);
     }
 
     private void OnDestroy()
     {
         GameManager.Instance.start -= this.Unlock;
+        GameManager.Instance.finish -= this.Lock;
     }
 
     void Update()
@@ -153,9 +157,6 @@ public class GangMovement : MonoBehaviour
         }
         else
         {
-            this.transform.parent = null;
-            this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-            this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
             this.GetComponent<Rigidbody>().isKinematic = false;     //Safety Net, if attaching to Rope doesn't work;
         }
         if (Input.GetKeyUp(KeyCode.Space) && this.isHanging)
@@ -240,6 +241,8 @@ public class GangMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (this.isLocked) return;
+
         if (this.body.velocity.y < 0)
         {
             this.body.velocity += Vector3.up * Physics.gravity.y * fallForce * Time.deltaTime;
@@ -249,10 +252,14 @@ public class GangMovement : MonoBehaviour
             this.body.velocity += Vector3.up * Physics.gravity.y * fallForce * Time.deltaTime;
         }
 
-        RaycastHit[] hits = Physics.SphereCastAll(transform.position,0.3f,Vector3.down ,this.groundDistance);
-        Debug.Log(hits.Length);
-        if (hits.Length > 2 && this.body.velocity.y < 0.1)    
-            //Raycast(transform.position, Vector3.down, this.groundDistance) && this.body.velocity.y < 0.1)// && this.body.velocity.y > -0.5)
+        /*RaycastHit hits;
+
+        if (Physics.//SphereCast(transform.position, 1f, Vector3.down, out hits, this.groundDistance) && this.body.velocity.y < 0.1)    
+            Raycast(transform.position, Vector3.down, this.groundDistance) && this.body.velocity.y < 0.1)// && this.body.velocity.y > -0.5)
+        {*/
+
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position, 0.5f, Vector3.down, this.groundDistance);
+        if (hits.Length > 2 && this.body.velocity.y < 0.5)
         {
             this.isGrounded = true;
 
@@ -310,7 +317,9 @@ public class GangMovement : MonoBehaviour
         if (this.doJump)
         {
             this.body.velocity = Vector3.up * this.jumpForce;
-            //this.body.AddForce(Vector3.up * this.jumpForce * Time.fixedDeltaTime, ForceMode.Impulse);
+            this.body.AddForce(Vector3.up * 5 * Time.fixedDeltaTime, ForceMode.Impulse);
+
+            
 
             this.hasJumpUp = false;
             this.doJump = false;
@@ -320,7 +329,7 @@ public class GangMovement : MonoBehaviour
     private void checkForHangable()
     {
         RaycastHit[] hits;
-        hits = Physics.SphereCastAll(this.transform.position, 2f, Vector3.forward, 3);
+        hits = Physics.SphereCastAll(this.transform.position, 2.5f, Vector3.forward, 5);
         foreach (RaycastHit hit in hits)
         {
             Hangable tryHang = hit.transform.gameObject.GetComponent<Hangable>();
@@ -339,21 +348,23 @@ public class GangMovement : MonoBehaviour
     private void hangTo(Hangable tryHang)
     {
         this.hangingTo = tryHang;
+        Rigidbody objRigidBody = this.hangingTo.GetComponent<Rigidbody>();
         this.GetComponent<Rigidbody>().isKinematic = true;
-        if (Vector3.Distance(this.transform.position, this.hangingTo.transform.position + Vector3.up * -2.35f) > 0.1f && !isHanging)
+        if (Vector3.Distance(this.transform.position, this.hangingTo.transform.position + Vector3.up * -2f) > 0.1f && !isHanging)
         {
-            this.transform.position = Vector3.MoveTowards(this.transform.position, this.hangingTo.transform.position + Vector3.up * -2.35f, 0.8f);
+            this.transform.position = Vector3.MoveTowards(this.transform.position, this.hangingTo.transform.position + Vector3.up * -2f, 0.8f);
         }
         else
         {
-            this.transform.parent = this.hangingTo.transform;
-            this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+            if (this.gameObject.GetComponent<FixedJoint>() == null)
+                this.gameObject.AddComponent<FixedJoint>().connectedBody = objRigidBody;
             if (!isHanging)
             {
                 this.hangingTo.Attach(direction, this.GetComponent<Rigidbody>());
             }
             this.isHanging = true;
             this.playerState = PlayerState.hang;
+            this.GetComponent<Rigidbody>().isKinematic = false;
         }
     }
 
@@ -362,17 +373,31 @@ public class GangMovement : MonoBehaviour
         StartCoroutine(HangCD());
         this.isHanging = false;
         this.playerState = PlayerState.fall;
+        Debug.Log("Destroy Joint");
+        Destroy(this.GetComponent<FixedJoint>());
         this.hangingTo.Detach();
         this.hangingTo = null;
-        this.transform.parent = null;
-        this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
-        this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     public void Unlock()
     {
         this.isLocked = false;
     }
+    public void Lock()
+    {
+        this.isLocked = true;
+        this.isTwerking = true;
+
+        this.animator.Play("twerk");
+    }
+
+    private void setHat(int hat)
+    {
+        if (hat == 0) return;
+
+        this.coolHat[hat - 1].SetActive(true);
+    }
+
 
     IEnumerator JumpCD()
     {

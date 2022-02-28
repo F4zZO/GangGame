@@ -9,26 +9,30 @@ public class TimeKeeper : MonoBehaviour
 
     private float startTime;
 
+    public float time;
+
     private bool isStarted = false;
 
     private void Start()
     {
         GameManager.Instance.start += StartTimer;
+        GameManager.Instance.getTime += EndTime;
     }
 
     private void OnDestroy()
     {
         GameManager.Instance.start -= StartTimer;
+        GameManager.Instance.getTime -= EndTime;
     }
 
     void Update()
     {
         if (!this.isStarted) return;
 
-        float time = Time.time - startTime;
+        this.time = Time.time - startTime;
 
-        string minutes = ((int)time / 60).ToString();
-        string seconds = (time % 60).ToString("f2");
+        string minutes = ((int)this.time / 60).ToString();
+        string seconds = (this.time % 60).ToString("f2");
 
         if (minutes.Equals("0"))
         {
@@ -44,5 +48,10 @@ public class TimeKeeper : MonoBehaviour
     {
         this.isStarted = true;
         this.startTime = Time.time;
+    }
+
+    public void EndTime()
+    {
+        GameManager.Instance.time = this.time;
     }
 }
