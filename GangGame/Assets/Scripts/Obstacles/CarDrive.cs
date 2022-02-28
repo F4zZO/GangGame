@@ -5,14 +5,14 @@ using UnityEngine;
 public class CarDrive : MonoBehaviour
 {
     private Rigidbody body;
-    private float timer = 5;
+    private float timer = 15f;
     private float speed;
     private float force;
 
     void Start()
     {
         this.body = this.GetComponent<Rigidbody>();
-        this.speed = Random.Range(1f, 2.5f);
+        this.speed = Random.Range(0.85f, 2f);
         this.force = Random.Range(20, 80);
     }
 
