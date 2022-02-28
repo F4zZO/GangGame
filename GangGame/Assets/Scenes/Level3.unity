@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5602663051093099072, guid: a51570dceba01a545996e2f818842c34, type: 3}
       propertyPath: carSpawnDelay
-      value: 1.94
+      value: 2.58
       objectReference: {fileID: 0}
     - target: {fileID: 5602663051093099072, guid: a51570dceba01a545996e2f818842c34, type: 3}
       propertyPath: firstCarSpawnTime
@@ -3850,7 +3850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5602663051093099072, guid: a51570dceba01a545996e2f818842c34, type: 3}
       propertyPath: carSpawnDelay
-      value: 2.01
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 5602663051093099072, guid: a51570dceba01a545996e2f818842c34, type: 3}
       propertyPath: firstCarSpawnTime
@@ -6342,7 +6342,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5602663051093099072, guid: a51570dceba01a545996e2f818842c34, type: 3}
       propertyPath: carSpawnDelay
-      value: 1.94
+      value: 2.82
       objectReference: {fileID: 0}
     - target: {fileID: 5602663051093099072, guid: a51570dceba01a545996e2f818842c34, type: 3}
       propertyPath: firstCarSpawnTime
@@ -8172,6 +8172,18 @@ PrefabInstance:
     - target: {fileID: 4920759549698686180, guid: 21d6c96159e976d4f85dfcd4bf217e2b, type: 3}
       propertyPath: m_Name
       value: SwingAnchor
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938590016049240104, guid: 21d6c96159e976d4f85dfcd4bf217e2b, type: 3}
+      propertyPath: angleIncrease
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938590016049240104, guid: 21d6c96159e976d4f85dfcd4bf217e2b, type: 3}
+      propertyPath: swingDuration
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8938590016049240104, guid: 21d6c96159e976d4f85dfcd4bf217e2b, type: 3}
+      propertyPath: attachmentPush
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8938590016093101778, guid: 21d6c96159e976d4f85dfcd4bf217e2b, type: 3}
       propertyPath: m_ConnectedAnchor.x
