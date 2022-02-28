@@ -48,6 +48,12 @@ public class MainMenu : MonoBehaviour
         GameManager.Instance.PlayLevel3();
     }
 
+    public void PlayTut()
+    {
+        GameManager.Instance.PlayTut();
+    }
+
+
     public void QuitGame ()
     {
         Debug.Log("Quit");

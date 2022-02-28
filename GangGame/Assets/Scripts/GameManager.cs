@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     public bool[] hasHat;
     public float[] highScores;
 
+    public float[ , ] scoreTime;
+
     private GameState state;
 
     public enum GameState
@@ -48,16 +50,23 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        this.scoreTime = new float[3, 2];
+
+        this.scoreTime[0, 0] = 80;
+        this.scoreTime[0, 1] = 40;
+
+        this.scoreTime[1, 0] = 80;
+        this.scoreTime[1, 1] = 50;
+
+        this.scoreTime[2, 0] = 240;
+        this.scoreTime[2, 1] = 120;
+
+
         this.isPaused = false;
         this.state = GameState.run;
 
         this.hasHat = new bool[3];
         this.highScores = new float[3];
-
-        /*
-        this.highScores[0] = 0;
-        this.highScores[1] = 0;
-        this.highScores[2] = 0; */
 
         this.data = SaveSystem.LoadData();
 
@@ -135,6 +144,9 @@ public class GameManager : MonoBehaviour
             case 2:
                 PlayLevel3();
                 break;
+            case 3:
+                PlayTut();
+                break;
             default:
                 PlayMainMenu();
                 break;
@@ -168,16 +180,27 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
+    public void PlayTut()
+    {
+        this.SaveGame();
+        Time.timeScale = 1f;
+        this.lvl = 4;
+        this.state = GameState.start;
+        SceneManager.LoadScene(4);
+    }
+
     private void RateRun()
     {
+        if (this.lvl == 4) return;
+
         if (this.time < this.highScores[(int) this.lvl - 1] || this.highScores[(int)this.lvl - 1] == 0){
             this.highScores[(int)this.lvl - 1] = this.time;
         }
 
         this.rating = 1;
-        if (this.time > 60f) return;
+        if (this.time > this.scoreTime[(int)this.lvl-1, 0]) return;
         this.rating = 2;
-        if (this.time > 30f) return;
+        if (this.time > this.scoreTime[(int)this.lvl - 1, 1]) return;
         this.rating = 3;
 
         this.hasHat[(int)this.lvl - 1] = true;
