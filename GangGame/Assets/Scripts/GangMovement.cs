@@ -247,8 +247,9 @@ public class GangMovement : MonoBehaviour
 
         RaycastHit hits;
 
-        if (Physics.SphereCast(transform.position, 1f, Vector3.down, out hits, this.groundDistance) && this.body.velocity.y < 0.1)    
-            //Raycast(transform.position, Vector3.down, this.groundDistance) && this.body.velocity.y < 0.1)// && this.body.velocity.y > -0.5)
+        if (Physics.Raycast(transform.position, Vector3.down, this.groundDistance) && this.body.velocity.y < 0.1)
+        //SphereCast(transform.position, 1f, Vector3.down, out hits, this.groundDistance) && this.body.velocity.y < 0.1)    
+        //Raycast(transform.position, Vector3.down, this.groundDistance) && this.body.velocity.y < 0.1)// && this.body.velocity.y > -0.5)
         {
             this.isGrounded = true;
 

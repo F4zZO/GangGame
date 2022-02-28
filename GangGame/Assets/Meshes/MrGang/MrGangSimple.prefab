@@ -1739,7 +1739,7 @@ MonoBehaviour:
   fastJump: 0
   walkSpeed: 4
   runSpeed: 8
-  airSpeed: 1.5
+  airSpeed: 3
   airFastSpeed: 6
   fallSpeed: 1
   landSpeed: 2
