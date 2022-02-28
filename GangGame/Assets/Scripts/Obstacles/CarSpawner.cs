@@ -6,6 +6,7 @@ public class CarSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject carPrefab;
     [SerializeField] private float firstCarSpawnTime;
+    [SerializeField, Range(1,6)] private float carSpawnDelay = 2;
     private float carSpawnTimer;
 
     private bool isLocked = true;
@@ -37,6 +38,6 @@ public class CarSpawner : MonoBehaviour
     public void SpawnCar()
     {
         GameObject gr = Instantiate(carPrefab, this.transform.position, this.transform.rotation);
-        this.carSpawnTimer = Random.Range(2.5f, 5.5f);
+        this.carSpawnTimer = carSpawnDelay;
     }
 }

@@ -7,13 +7,11 @@ public class SwingingObstacle : MonoBehaviour
     [SerializeField] private HingeJoint hJoint;
     [SerializeField] private float swingDuration = 3;
     [SerializeField] private float maxAngle = 90;
-    [SerializeField] private float force = 10;
     private float swingDir = -1;
     private float elapsedTime = 0;
 
     private void FixedUpdate()
     {
-
         JointSpring spr = hJoint.spring;
             float t = elapsedTime / swingDuration;
             t = t * t * (3f - 2f * t);
