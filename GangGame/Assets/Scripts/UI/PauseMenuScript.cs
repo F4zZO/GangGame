@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;
 public class PauseMenuScript : MonoBehaviour
 {
     public GameObject pauseMenu;
+    private GameManager gm;
 
-    private GameManager gm = GameManager.Instance;
     private bool isLocked = true;
+
+    private void Start()
+    {
+        this.gm = GameManager.Instance;
+    }
 
     void Update()
     {

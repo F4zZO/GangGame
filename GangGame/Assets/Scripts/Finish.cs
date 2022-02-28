@@ -5,13 +5,15 @@ using System.Linq;
 
 public class Finish : MonoBehaviour
 {
+
+    [SerializeField] private GameObject Firework;
+
     private void OnTriggerEnter(Collider coll)
     {
         if (coll.gameObject.tag.Equals("Player"))
         {
-            //coll.gameObject.GetComponent<PlayerUI>().showWinScreen();
+            this.Firework.SetActive(true);
             GameManager.Instance.Win();
-            Time.timeScale = 0f;
         }
     }
 }
