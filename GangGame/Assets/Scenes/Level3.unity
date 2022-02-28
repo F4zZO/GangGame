@@ -132,7 +132,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5602663051093099072, guid: a51570dceba01a545996e2f818842c34, type: 3}
       propertyPath: carSpawnDelay
-      value: 1.94
+      value: 2.58
       objectReference: {fileID: 0}
     - target: {fileID: 5602663051093099072, guid: a51570dceba01a545996e2f818842c34, type: 3}
       propertyPath: firstCarSpawnTime
@@ -3850,7 +3850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5602663051093099072, guid: a51570dceba01a545996e2f818842c34, type: 3}
       propertyPath: carSpawnDelay
-      value: 2.01
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 5602663051093099072, guid: a51570dceba01a545996e2f818842c34, type: 3}
       propertyPath: firstCarSpawnTime
@@ -6342,7 +6342,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5602663051093099072, guid: a51570dceba01a545996e2f818842c34, type: 3}
       propertyPath: carSpawnDelay
-      value: 1.94
+      value: 2.82
       objectReference: {fileID: 0}
     - target: {fileID: 5602663051093099072, guid: a51570dceba01a545996e2f818842c34, type: 3}
       propertyPath: firstCarSpawnTime
@@ -7080,7 +7080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6217013541097597121, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.000000024214383
+      value: 0.000000029802319
       objectReference: {fileID: 0}
     - target: {fileID: 6217013541097597121, guid: c7a22d6b581b5d843a10bd966890585f, type: 3}
       propertyPath: m_LocalRotation.y
