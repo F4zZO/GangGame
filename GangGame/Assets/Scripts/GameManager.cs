@@ -105,6 +105,8 @@ public class GameManager : MonoBehaviour
         this.getTime();
         this.RateRun();
         this.finish();
+
+        SaveSystem.SaveData(this);
     }
 
     public void Lose()
@@ -177,5 +179,7 @@ public class GameManager : MonoBehaviour
         this.rating = 2;
         if (this.time > 30f) return;
         this.rating = 3;
+
+        this.hasHat[(int)this.lvl - 1] = true;
     }
 }

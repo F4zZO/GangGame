@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    //[SerializeField] private Toggle t;
     [SerializeField] private Material material;
     [SerializeField] private GameObject[] coolHat;
 
@@ -58,6 +57,7 @@ public class MainMenu : MonoBehaviour
     public void EquipHat(int i)
     {
         this.Warning.SetActive(false);
+        StopCoroutine(WarningTimer());
 
         if (i > 1)
         {
